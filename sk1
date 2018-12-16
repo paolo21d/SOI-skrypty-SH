@@ -1,0 +1,6 @@
+#!/bin/sh
+#program przyjmuje 1. paramter ile razy ma powtorzyc polecenie, 2. parametr w "" jakie polecenie ma wykonac
+for i in `seq 1 $1`; do
+	echo "Iteracja $i"
+	$2
+done

@@ -1,0 +1,16 @@
+#!/bin/sh
+#jako argument podaje sie ID usera a program wypsuje nazwe
+if test $# = 0; then
+	echo "Nie podano argumentow!"; exit 1;
+fi
+uid=$1
+oldIFS=$IFS;
+IFS=":"
+while read line; do
+	set $line
+	if test $3 = $uid; then
+		echo "$1"; IFS=$oldIFS; exit 0;
+	fi
+done < /etc/passwd
+echo "Nie ma usera o podanym id"
+IFS=$oldIFS
